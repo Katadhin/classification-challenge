@@ -1,91 +1,61 @@
-Background
+# Email Spam Detector
 
-Let's say you work at an Internet Service Provider (ISP) and you've been tasked with improving the email filtering system for its customers. You've been provided with a dataset that contains information about emails, with two possible classifications: spam and not spam. The ISP wants you to take this dataset and develop a supervised machine learning (ML) model that will accurately detect spam emails so it can filter them out of its customers' inboxes.
-You will be creating two classification models to fit the provided data, and evaluate which model is more accurate at detecting spam. The models you'll create will be a logistic regression model and a random forest model.
-Files
+This project builds and compares two machine learning models - Logistic Regression and Random Forest - for detecting spam emails. The models are trained on a dataset of email features and labels indicating whether each email is spam or not.
 
-Download the following files to help you get started:
-Module 13 Challenge files Links to an external site.
-Before You Begin
+## Dataset
 
-Before starting the assignment, be sure to complete the following steps:
-Create a new repository for this project called classification-challenge. Do not add this homework assignment to an existing repository.
-Clone the new repository to your computer.
-Inside your local Git repository, add the starter file spam_detector.ipynb from your file downloads.
-Push these changes to GitHub or GitLab.
-Instructions
+The dataset used in this project is sourced from [here](https://static.bc-edx.com/ai/ail-v-1-0/m13/challenge/spam-data.csv). It contains 4,601 email samples, each represented by 57 features including word frequencies, character frequencies, and capital run length statistics. The target variable is a binary 'spam' label (1 for spam, 0 for non-spam).
 
-This challenge consists of the following subsections:
-Split the data into training and testing sets.
-Scale the features.
-Create a logistic regression model.
-Create a random forest model.
-Evaluate the models.
-Split the Data into Training and Testing Sets
+## Project Structure
 
-Open the starter code notebook and then use it to complete the following steps.
-Read the data from https://static.bc-edx.com/ai/ail-v-1-0/m13/challenge/spam-data.csv Links to an external site. into a Pandas DataFrame.
-In the appropriate markdown cell, make a prediction as to which model you expect to do better.
-Create the labels set (y) from the “spam” column, and then create the features (X) DataFrame from the remaining columns.
-NOTE
-A value of 0 in the “spam” column means that the message is legitimate. A value of 1 means that the message has been classified as spam.
-Check the balance of the labels variable (y) by using the value_counts function.
-Split the data into training and testing datasets by using train_test_split.
-Scale the Features
+- `spam_detector.ipynb`: Jupyter Notebook containing the main code for data loading, preprocessing, model training, evaluation, and comparison.
+- `spam-data.csv`: The raw dataset file.
+- `README.md`: This readme file providing an overview of the project.
 
-Create an instance of StandardScaler.
-Fit the Standard Scaler with the training data.
-Scale the training and testing features DataFrames using the transform function.
-Create a Logistic Regression Model
+## Dependencies
 
-Employ your knowledge of logistic regression to complete the following steps:
-Fit a logistic regression model by using the scaled training data (X_train_scaled and y_train). Set the random_state argument to 1.
-Save the predictions on the testing data labels by using the testing feature data (X_test_scaled) and the fitted model.
-Evaluate the model’s performance by calculating the accuracy score of the model.
-Create a Random Forest Model
+- Python 3.7+
+- pandas
+- scikit-learn
 
-Employ your knowledge of the random forest classifier to complete the following steps:
-Fit a random forest classifier model by using the scaled training data (X_train_scaled and y_train).
-Save the predictions on the testing data labels by using the testing feature data (X_test_scaled) and the fitted model.
-Evaluate the model’s performance by calculating the accuracy score of the model.
-Evaluate the Models
+Install the required Python packages using pip:
+```
+pip install pandas scikit-learn
+```
 
-In the appropriate markdown cell, answer the following questions:
-Which model performed better?
-How does that compare to your prediction?
-Requirements
+## Usage
 
-To receive all points, your Jupyter notebook file must have all of the following:
-Split the Data into Training and Testing Sets (30 points)
+1. Clone this repository and navigate to the project directory.
+2. Run the Jupyter Notebook `spam_detector.ipynb` and execute the cells in order.
 
-There is a prediction about which model you expect to do better. (5 points)
-The labels set (y) is created from the “spam” column. (5 points)
-The features DataFrame (X) is created from the remaining columns. (5 points)
-The value_counts function is used to check the balance of the labels variable (y). (5 points)
-The data is correctly split into training and testing datasets by using train_test_split. (10 points)
-Scale the Features (20 points)
+The notebook will:
+- Load and preprocess the dataset
+- Split the data into training and testing sets
+- Scale the feature data using StandardScaler
+- Train and evaluate a Logistic Regression model
+- Train and evaluate a Random Forest model
+- Compare the performance of the two models
+- Save the trained models for future use
 
-An instance of StandardScaler is created. (5 points)
-The Standard Scaler instance is fit with the training data. (5 points)
-The training features DataFrame is scaled using the transform function. (5 points)
-The testing features DataFrame is scaled using the transform function. (5 points)
-Create a Logistic Regression Model (20 points)
+## Results
 
-A logistic regression model is created with a random_state of 1. (5 points)
-The logistic regression model is fitted to the scaled training data (X_train_scaled and y_train). (5 points)
-Predictions are made for the testing data labels by using the testing feature data (X_test_scaled) and the fitted model, and saved to a variable. (5 points)
-The model’s performance is evaluated by calculating the accuracy score of the model with the accuracy_score function. (5 points)
-Create a Random Forest Model (20 points)
+On the test set:
+- The Logistic Regression model achieved an accuracy of 92.0%.
+- The Random Forest model achieved an accuracy of 95.7%.
 
-A random forest model is created with a random_state of 1. (5 points)
-The random forest model is fitted to the scaled training data (X_train_scaled and y_train). (5 points)
-Predictions are made for the testing data labels by using the testing feature data (X_test_scaled) and the fitted model, and saved to a variable. (5 points)
-The model’s performance is evaluated by calculating the accuracy score of the model with the accuracy_score function. (5 points)
-Evaluate the Models (10 points)
+The Random Forest model outperformed the Logistic Regression model for this specific task and dataset.
 
-The following questions are answered accurately:
-Which model performed better? (5 points)
-How does that compare to your prediction? (5 points)
-Grading
+## Future Work
 
-This challenge will be evaluated against the requirements and assigned a grade according to the following table:# classification-challenge
+Potential enhancements to this project could include:
+
+- Experimenting with additional features or feature engineering techniques
+- Tuning the hyperparameters of the models to optimize performance
+- Exploring other machine learning algorithms for spam detection
+- Building a user interface or API to allow easy interaction with the trained models
+
+Feel free to contribute to this project by submitting pull requests or reporting issues.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
